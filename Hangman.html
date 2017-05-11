@@ -21,9 +21,10 @@
             }
             
             var remainingLetters = word.length;
+            var guesses = 10;
             
             //Игровой цикл
-            while (remainingLetters > 0) {
+            while (remainingLetters > 0 && guesses > 0) {
                 //Показываем состояние игры
                 alert(answerArray.join(" "));
                 
@@ -36,6 +37,7 @@
                     alert("Пожалуйста, введите одиночную букву.");
                 } else {
                     //Обновляем состояние игры
+                    guesses--;
                     for (var j = 0; j < word.length; j++) {
                         if (word[j] === guess) {
                             answerArray[j] = guess;
@@ -48,7 +50,13 @@
             
             //Отображаем ответ и поздравляем игрока
             alert(answerArray.join(" "));
-            alert("Отлично! Было загадано слово " + word);
+            
+            if(guesses > 0) {
+                alert("Отлично! Было загадано слово " + word);
+            } else {
+                alert("Жаль! Было загадано слово " + word);
+            }
+            
         </script>
     </body>
 </html>
